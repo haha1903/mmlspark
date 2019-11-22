@@ -1,4 +1,5 @@
-FROM java:openjdk-8-jdk
+#FROM java:openjdk-8-jdk
+FROM openjdk:8-jdk-stretch
 MAINTAINER Dalitso Banda <dalitsohb@gmail.com>
 
 # `Z_VERSION` will be updated by `dev/change_zeppelin_version.sh`

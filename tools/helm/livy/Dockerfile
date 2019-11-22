@@ -1,4 +1,5 @@
-FROM java:openjdk-8-jdk
+#FROM java:openjdk-8-jdk
+FROM openjdk:8-jdk-stretch
 MAINTAINER Dalitso Banda <dalitsohb@gmail.com>
 
 ENV LIVY_VERSION="git_master"
@@ -43,7 +44,7 @@ RUN echo "$LOG_TAG Install essentials" && \
     rm -rf /tmp/*
 
 # Get Spark from US Apache mirror.
-ENV APACHE_SPARK_VERSION 2.4.0
+ENV APACHE_SPARK_VERSION 2.4.4
 ENV HADOOP_VERSION 3.2.0
 ENV HADOOP_GIT_COMMIT="release-3.2.0-RC1"
 

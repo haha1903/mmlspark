@@ -1,7 +1,8 @@
-FROM java:openjdk-8-jdk
+#FROM java:openjdk-8-jdk
+FROM openjdk:8-jdk-stretch
 
 # Get Spark from US Apache mirror.
-ENV APACHE_SPARK_VERSION 2.4.0
+ENV APACHE_SPARK_VERSION 2.4.4
 ENV HADOOP_VERSION 3.2.0
 ENV HADOOP_GIT_COMMIT="release-3.2.0-RC1"
 
@@ -18,9 +19,9 @@ RUN echo "$LOG_TAG Getting maven" && \
     wget http://www.eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && \
     tar -zxf apache-maven-3.3.9-bin.tar.gz -C /usr/local/ && \
     ln -s /usr/local/apache-maven-3.3.9/bin/mvn /usr/local/bin/mvn 
+#COPY sources.list /etc/apt
 
 RUN echo "$LOG_TAG building hadoop" && \
-    echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list && \
     apt-get update && \
     # build deps and deps for c bindings for cntk
     apt-get install -y g++ gcc-6 libstdc++-6-dev make build-essential && \
